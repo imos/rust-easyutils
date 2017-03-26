@@ -1,3 +1,5 @@
+mod strutil;
+
 /// Generic type for Error.
 ///
 /// The `Error` type can be converted from any types that implement
@@ -24,7 +26,18 @@ impl<T: std::fmt::Debug> From<T> for Error {
 
 #[cfg(test)]
 mod tests {
+    use super::Error;
+
     #[test]
-    fn it_works() {
+    fn test_error() {
+        let result = || -> Result<(), Error> {
+            "foo".parse::<i32>()?;
+            Ok(())
+        }();
+        assert_eq!(match result {
+                       Err(Error(s)) => s,
+                       _ => "".into(),
+                   },
+                   "ParseIntError { kind: InvalidDigit }");
     }
 }
