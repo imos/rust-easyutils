@@ -1,3 +1,27 @@
+/// Generic type for Error.
+///
+/// The `Error` type can be converted from any types that implement
+/// `std::fmt::Debug`. This enables to use `?` operator for any error type, and
+/// it should be useful especially in writing scratch code.
+///
+/// ```
+/// use easyutils;
+///
+/// fn example() -> Result<(), easyutils::Error> {
+///   // parse returns Result<i32, FromStr::Err>.
+///   let a = "12345".parse::<i32>()?;
+///   println!("{}\n", a);
+///   Ok(())
+/// }
+/// ```
+pub struct Error(String);
+
+impl<T: std::fmt::Debug> From<T> for Error {
+    fn from(error: T) -> Self {
+        Error(format!("{:?}", error))
+    }
+}
+
 #[cfg(test)]
 mod tests {
     #[test]
