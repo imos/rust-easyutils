@@ -1,0 +1,6 @@
+[package]
+name = "easyutils"
+version = "0.1.0"
+authors = ["imos <github@imoz.jp>"]
+
+[dependencies]
