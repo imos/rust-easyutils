@@ -74,8 +74,7 @@ pub trait StrUtil {
     /// ```
     /// use easyutils::*;
     ///
-    /// assert_eq!("abc def/ghi%jkl".as_bytes().urlencode(),
-    ///            "abc+def%2Fghi%25jkl");
+    /// assert_eq!("abc def/ghi%jkl".urlencode(), "abc+def%2Fghi%25jkl");
     /// ```
     fn urlencode(&self) -> String;
 }
