@@ -1,8 +1,11 @@
-mod strutil;
+pub mod strutil;
+
+pub use strutil::BinaryUtil;
+pub use strutil::StrUtil;
 
 /// Generic type for Error.
 ///
-/// The `Error` type can be converted from any types that implement
+/// `Error` type can be converted from any types that implement
 /// `std::fmt::Debug`. This enables to use `?` operator for any error type, and
 /// it should be useful especially in writing scratch code.
 ///
